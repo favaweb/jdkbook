@@ -1,0 +1,18 @@
+1.线程唤醒与等待: 释放运行资源，唤醒时需要重新分配
+	wait():使线程陷入一直等待的状态
+	wait(long timeout):等待timeout毫秒
+	notify():唤醒该对象中等待的任一线程（如果有多个则唤醒单个）
+	notify():唤醒该对象中等待的所有线程
+	
+2.线程的休眠和中断：不释放运行资源，休眠结束直接进入运行
+	sleep(long timeout):使当前线程休眠timeout毫秒，休眠过程中中断，则抛InterruptedException异常
+	sleep(long timeout, int nanos):使当前线程休眠timeout毫秒+nanos微秒，中断同上
+	interrupt():中断线程休眠状态
+	
+3.线程的终止：stop不安全，利用线程的休眠和中断机制，在子线程中有意为调度线程安排中断机会
+	join():一直阻塞当前线程，等待线程结束，等待过程中遇上中断请求，则抛出InterruptedException异常
+	join(long timeout):阻塞timeout毫秒,其他同上
+	join(long timeout, int nanos):阻塞timeout毫秒+nanos微秒,其他同上
+	
+4.程序退出时间：在退出时执行特定的业务逻辑，和必要的补救措施
+	
